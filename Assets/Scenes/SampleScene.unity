@@ -695,8 +695,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _counterText: {fileID: 1465691850}
-  _stateText: {fileID: 0}
-  _counter: {fileID: 0}
+  _stateText: {fileID: 34970347}
+  _counter: {fileID: 1582362261}
 --- !u!1 &1583301270
 GameObject:
   m_ObjectHideFlags: 0

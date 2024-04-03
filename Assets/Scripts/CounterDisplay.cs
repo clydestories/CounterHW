@@ -16,7 +16,7 @@ public class CounterDisplay : MonoBehaviour
     private void OnEnable()
     {
         _counter.CounterIncreased.AddListener(UpdateCounter);
-        _counter.CounterIncreased.AddListener(UpdateState);
+        _counter.StateChanged.AddListener(UpdateState);
     }
 
     private void UpdateCounter()
@@ -44,6 +44,6 @@ public class CounterDisplay : MonoBehaviour
     private void OnDisable()
     {
         _counter.CounterIncreased.RemoveListener(UpdateCounter);
-        _counter.CounterIncreased.RemoveListener(UpdateState);
+        _counter.StateChanged.RemoveListener(UpdateState);
     }
 }
