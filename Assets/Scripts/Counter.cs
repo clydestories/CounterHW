@@ -19,22 +19,35 @@ public class Counter : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            _isActive = !_isActive;
+            if (_isActive)
+            {
+                TurnOff();
+            }
+            else
+            {
+                TurnOn();
+            }
+
             StateChanged?.Invoke();
         }
 
-        if (_isActive && _isDelayed == false)
-        {
-            StartCoroutine(nameof(IncreaseCounter));
-        }
+        StartCoroutine(nameof(IncreaseCounter));
     }
 
     private IEnumerator IncreaseCounter()
     {
-        _isDelayed = true;
+        yield return new WaitWhile(() => _isActive == false);
         _counterValue++;
         CounterIncreased?.Invoke();
-        yield return new WaitForSeconds(_delay);
-        _isDelayed = false;
+    }
+
+    private void TurnOn()
+    {
+        _isActive = true;
+    }
+
+    private void TurnOff()
+    {
+        _isActive = false;
     }
 }
