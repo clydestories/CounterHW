@@ -7,7 +7,6 @@ public class Counter : MonoBehaviour
     private bool _isActive = false;
     private int _counterValue = 0;
     private float _delay = 0.5f;
-    private bool _isDelayed = false;
 
     public UnityEvent CounterIncreased;
     public UnityEvent StateChanged;
