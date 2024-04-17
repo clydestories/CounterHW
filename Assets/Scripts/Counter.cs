@@ -30,20 +30,24 @@ public class Counter : MonoBehaviour
 
             StateChanged?.Invoke();
         }
-
-        StartCoroutine(nameof(IncreaseCounter));
     }
 
     private IEnumerator IncreaseCounter()
     {
-        yield return new WaitWhile(() => _isActive == false);
-        _counterValue++;
-        CounterIncreased?.Invoke();
+        var wait = new WaitForSeconds(_delay);
+
+        while (_isActive)
+        {
+            _counterValue++;
+            CounterIncreased?.Invoke();
+            yield return wait;
+        }
     }
 
     private void TurnOn()
     {
         _isActive = true;
+        StartCoroutine(IncreaseCounter());
     }
 
     private void TurnOff()
